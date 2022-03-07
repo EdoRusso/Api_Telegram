@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Edo
  */
 public class ApiTelegram {
-static String chiave="5130903459:AAHJ7stpGOH3ADTxyxAf88zu02VMpqXhUag";
+static String chiave="";
     /**
      * @param args the command line arguments
      */
@@ -27,12 +27,12 @@ static String chiave="5130903459:AAHJ7stpGOH3ADTxyxAf88zu02VMpqXhUag";
     } catch (IOException ex) {
         Logger.getLogger(ApiTelegram.class.getName()).log(Level.SEVERE, null, ex);
     }
-    try {
-        a.sendMessage();
-    } catch (IOException ex) {
-        Logger.getLogger(ApiTelegram.class.getName()).log(Level.SEVERE, null, ex);
-    }
-     
+//    try {
+//        a.sendMessage();
+//    } catch (IOException ex) {
+//        Logger.getLogger(ApiTelegram.class.getName()).log(Level.SEVERE, null, ex);
+//    }
+//     
     }
     
 }

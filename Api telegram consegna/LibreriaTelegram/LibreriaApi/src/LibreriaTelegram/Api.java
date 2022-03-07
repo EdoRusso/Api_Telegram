@@ -20,7 +20,7 @@ public class Api {
     public void getUpdates() throws IOException{
          new getUpdates(url);
     }
-    public void sendMessage() throws IOException{
-        new SendMessage();
-    }
+//    public void sendMessage() throws IOException{
+//        new SendMessage(url);
+//    }
 }

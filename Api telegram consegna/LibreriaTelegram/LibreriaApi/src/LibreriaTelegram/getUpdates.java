@@ -12,8 +12,10 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -56,16 +58,17 @@ public class getUpdates {
                     String text = vett.getJSONObject(i).getJSONObject("message").getString("text");
                     Chat_id = id;
                     System.out.println(updates_id + "\n" + message_id + "\n" + id + "\n" + is_bot + "\n" + name + "\n" + language + "\n" + id_chat + "\n" + first_name + "\n" + type + "\n" + date + "\n" + text);
+                    String tmp="";
                     if (text.startsWith("/citta")) {
                         if (text.length() > 6) {
-                            String tmp = text.substring(7);
+                            tmp = text.substring(7);
                             FileWriter myWriter = new FileWriter("citta.csv", true);
                             myWriter.write(updates_id + " " + tmp + " " + first_name + "\n");
                             myWriter.close();
                         }
-                        String benvenuto = "benvento";
+                        GetCoordinate benvenuto = new GetCoordinate();
                         System.out.println(stringa);
-                        url = new URL(stringa + "/sendMessage?chat_id=" + id_chat + "&text=" + benvenuto + '"');
+                        url = new URL(stringa + "/sendMessage?chat_id=" + id_chat + "&text=" + benvenuto.xml(tmp) + '"');
                         s = new Scanner(url.openStream());
                         s.next();
                     }
@@ -75,6 +78,10 @@ public class getUpdates {
             }
 
         } catch (MalformedURLException ex) {
+            Logger.getLogger(getUpdates.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(getUpdates.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
             Logger.getLogger(getUpdates.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

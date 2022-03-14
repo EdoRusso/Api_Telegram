@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author Edo
  */
 public class ApiTelegram {
-static String chiave="";
+static String chiave="5130903459:AAHJ7stpGOH3ADTxyxAf88zu02VMpqXhUag";
     /**
      * @param args the command line arguments
      */

@@ -60,16 +60,14 @@ public class MyXMLOperations {
         root = document.getDocumentElement();
         List<LatLon> dati = new ArrayList();
         LatLon dato;
-        nodelist = root.getElementsByTagName("Cube");
+        nodelist = root.getElementsByTagName("place");
         if (nodelist != null && nodelist.getLength() > 0) {
             int numNode = nodelist.getLength();
-            element = (Element) nodelist.item(1); // il secondo tag
-            String str = element.getAttribute("time");
-            for (int i = 2; i < numNode; i++) {
-                element = (Element) nodelist.item(i);
+            element=(Element)nodelist.item(0);
+                int numelement =  nodelist.item(0).getAttributes().getLength();
                 dato = getInfo(element);
                 dati.add(dato);
-            }
+            
         }
         return dati;
     }
@@ -80,7 +78,10 @@ public class MyXMLOperations {
         LatLon info = null;
         
         String lat = element.getAttribute("lat");
-        String log = element.getAttribute("log");
+        String log = element.getAttribute("lon");
+        System.out.println("------------------------- "+lat);
+        System.out.println("------------------------- "+log);
+
         info=new LatLon(lat, log);
         return info;
     }

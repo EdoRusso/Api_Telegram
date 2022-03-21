@@ -43,11 +43,9 @@ public class GetCoordinate {
             Scanner s = new Scanner(url.openStream());
             s.useDelimiter("\u001a");
             String obj = s.next();
-            in = new BufferedReader(new InputStreamReader(url.openStream()));
-            String line;
-            while ((line = in.readLine()) != null) {
-               out.println(line);
-            }
+            out.print(obj);
+            out.close();
+            
         } catch (MalformedURLException ex) {
             Logger.getLogger(GetCoordinate.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -56,7 +54,8 @@ public class GetCoordinate {
         MyXMLOperations xml= new MyXMLOperations();
         getIndicazioni=new ArrayList<>();
         getIndicazioni=xml.parseDocument("xml.txt");
-        return (getIndicazioni.get(0).lat+" "+getIndicazioni.get(0).log);
+        return (getIndicazioni.get(0).lat+";"+getIndicazioni.get(0).log+";");
     }
+
 
 }
